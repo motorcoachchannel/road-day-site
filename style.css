@@ -210,3 +210,10 @@ h3{font-size:clamp(28px,2.6vw,36px);margin-bottom:8px}
  .hero-shade{background:linear-gradient(0deg,rgba(11,12,14,.97) 0%,rgba(11,12,14,.88) 55%,rgba(11,12,14,.55) 100%)}
  .hero-title{margin-bottom:26px}
 }
+
+.social{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}
+.social-h{font:600 14px var(--cond);letter-spacing:.16em;text-transform:uppercase;color:var(--m)}
+.social-h b{color:var(--y);font-weight:600}
+.social ul{display:flex;gap:10px;list-style:none;margin:0;padding:0}
+.social a{display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--line);color:var(--c);transition:color .2s,border-color .2s,background .2s}
+.social a:hover,.social a:focus-visible{color:var(--y);border-color:var(--y);background:var(--n2)}
