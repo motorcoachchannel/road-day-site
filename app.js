@@ -31,7 +31,7 @@
   // Map
   var svg=document.getElementById('map');
   if(svg&&window.GEO){
-    var S={CMH:[1229.9,509.3,'COLUMBUS','l'],GVL:[1261.2,641.3,'GREENVILLE','l'],ATH:[1243.4,667.5,'ATHENS','l'],HFD:[1419.8,424.3,'HARTFORD','r'],STR:[1427.5,420.9,'STORRS','r']};
+    var S={CMH:[1229.9,509.3,'COLUMBUS','l'],GVL:[1261.2,641.3,'GREENVILLE','l'],ATH:[1243.4,667.5,'ATHENS','l'],HFD:[1419.8,424.3,'HARTFORD','r'],STR:[1427.5,420.9,'STORRS','r'],PGF:[1233.5,619.9,'PIGEON FORGE','l'],SLR:[1283.0,471.9,'SLIPPERY ROCK','r'],MGW:[1291.3,508.7,'MORGANTOWN','r'],SHV:[1022.0,722.4,'SHREVEPORT','r'],MOW:[1111.9,530.6,'MOWEAQUA','l'],STL:[1090.0,558.5,'ST. LOUIS','l']};
     var ns='http://www.w3.org/2000/svg';
     function el(t,a){var e=document.createElementNS(ns,t);for(var k in a)e.setAttribute(k,a[k]);svg.appendChild(e);return e}
     el('path',{d:GEO.nation,fill:'#15171B',stroke:'#3a3d44','stroke-width':2});
@@ -40,12 +40,13 @@
     var l1=el('path',{d:'M1229.9,509.3 C1275,560 1275,610 1261.2,641.3 Q1236,650 1243.4,667.5',fill:'none',stroke:'#FFC20E','stroke-width':7,'stroke-linecap':'round'});
     var l2=el('path',{d:'M1243.4,667.5 C1330,600 1380,500 1419.8,424.3',fill:'none',stroke:'#FFC20E','stroke-width':6,'stroke-dasharray':'22 14',opacity:.85});
     var l3=el('path',{d:'M1419.8,424.3 C1200,330 900,420 760,560',fill:'none',stroke:'#9A9CA0','stroke-width':4,'stroke-dasharray':'6 14','stroke-linecap':'round',opacity:.6});
+    [['M1283.0,471.9 Q1296,490 1291.3,508.7 C1200,560 1080,640 1022.0,722.4',6],['M1111.9,530.6 Q1100,548 1090.0,558.5',6]].forEach(function(a){el('path',{d:a[0],fill:'none',stroke:'#FFC20E','stroke-width':a[1],'stroke-dasharray':'22 14',opacity:.85})});
     el('text',{x:790,y:520,class:'map-lbl',fill:'#9A9CA0'}).textContent='NEXT STOP?';
     Object.keys(S).forEach(function(k){
       var s=S[k];
       el('circle',{cx:s[0],cy:s[1],r:16,fill:'rgba(255,194,14,.18)'});
       el('circle',{cx:s[0],cy:s[1],r:7,fill:'#FFC20E',stroke:'#0B0C0E','stroke-width':3});
-      var t=el('text',{x:s[3]=='l'?s[0]-24:s[0]+22,y:s[1]+(k=='STR'?-12:k=='HFD'?22:k=='GVL'?-6:k=='CMH'?8:22),class:'map-lbl','text-anchor':s[3]=='l'?'end':'start'});
+      var t=el('text',{x:s[3]=='l'?s[0]-24:s[0]+22,y:s[1]+({STR:-12,HFD:22,GVL:-2,CMH:8,PGF:-10,SLR:-6,MGW:14,SHV:8,MOW:-8,STL:22}[k]!==undefined?{STR:-12,HFD:22,GVL:-2,CMH:8,PGF:-10,SLR:-6,MGW:14,SHV:8,MOW:-8,STL:22}[k]:22),class:'map-lbl','text-anchor':s[3]=='l'?'end':'start'});
       t.textContent=s[2];
     });
     // draw-on animation
