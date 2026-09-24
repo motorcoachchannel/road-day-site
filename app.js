@@ -16,7 +16,7 @@
   });
 
   // Countdown to Episode 1 game day (target date; kickoff time TBD)
-  var target=new Date('2026-11-14T12:00:00-05:00').getTime();
+  var target=new Date('2026-10-10T12:00:00-04:00').getTime();
   var cd=document.getElementById('cd');
   function pad(n){return String(n).padStart(2,'0')}
   function tick(){
@@ -31,13 +31,13 @@
   // Map
   var svg=document.getElementById('map');
   if(svg&&window.GEO){
-    var S={GVL:[1261.2,641.3,'GREENVILLE','l'],ATH:[1243.4,667.5,'ATHENS','l'],HFD:[1419.8,424.3,'HARTFORD','r'],STR:[1427.5,420.9,'STORRS','r']};
+    var S={CMH:[1229.9,509.3,'COLUMBUS','l'],GVL:[1261.2,641.3,'GREENVILLE','l'],ATH:[1243.4,667.5,'ATHENS','l'],HFD:[1419.8,424.3,'HARTFORD','r'],STR:[1427.5,420.9,'STORRS','r']};
     var ns='http://www.w3.org/2000/svg';
     function el(t,a){var e=document.createElementNS(ns,t);for(var k in a)e.setAttribute(k,a[k]);svg.appendChild(e);return e}
     el('path',{d:GEO.nation,fill:'#15171B',stroke:'#3a3d44','stroke-width':2});
     el('path',{d:GEO.states,fill:'none',stroke:'#26292f','stroke-width':1.2});
     // season line
-    var l1=el('path',{d:'M1261.2,641.3 Q1236,650 1243.4,667.5',fill:'none',stroke:'#FFC20E','stroke-width':7,'stroke-linecap':'round'});
+    var l1=el('path',{d:'M1229.9,509.3 C1275,560 1275,610 1261.2,641.3 Q1236,650 1243.4,667.5',fill:'none',stroke:'#FFC20E','stroke-width':7,'stroke-linecap':'round'});
     var l2=el('path',{d:'M1243.4,667.5 C1330,600 1380,500 1419.8,424.3',fill:'none',stroke:'#FFC20E','stroke-width':6,'stroke-dasharray':'22 14',opacity:.85});
     var l3=el('path',{d:'M1419.8,424.3 C1200,330 900,420 760,560',fill:'none',stroke:'#9A9CA0','stroke-width':4,'stroke-dasharray':'6 14','stroke-linecap':'round',opacity:.6});
     el('text',{x:790,y:520,class:'map-lbl',fill:'#9A9CA0'}).textContent='NEXT STOP?';
@@ -45,7 +45,7 @@
       var s=S[k];
       el('circle',{cx:s[0],cy:s[1],r:16,fill:'rgba(255,194,14,.18)'});
       el('circle',{cx:s[0],cy:s[1],r:7,fill:'#FFC20E',stroke:'#0B0C0E','stroke-width':3});
-      var t=el('text',{x:s[3]=='l'?s[0]-24:s[0]+22,y:s[1]+(k=='STR'?-12:k=='HFD'?22:k=='GVL'?-6:22),class:'map-lbl','text-anchor':s[3]=='l'?'end':'start'});
+      var t=el('text',{x:s[3]=='l'?s[0]-24:s[0]+22,y:s[1]+(k=='STR'?-12:k=='HFD'?22:k=='GVL'?-6:k=='CMH'?8:22),class:'map-lbl','text-anchor':s[3]=='l'?'end':'start'});
       t.textContent=s[2];
     });
     // draw-on animation
