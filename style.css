@@ -170,8 +170,8 @@ h3{font-size:clamp(28px,2.6vw,36px);margin-bottom:8px}
 .who b{display:block;font:600 15px var(--cond);letter-spacing:.16em;text-transform:uppercase;color:var(--c)}
 .form{background:var(--n);border:1px solid var(--line);border-top:4px solid var(--y);padding:clamp(22px,3vw,36px);display:grid;gap:16px;position:relative}
 .form fieldset{border:0}
-.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
-@media(max-width:520px){.seg{grid-template-columns:1fr 1fr}}
+.seg{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}.seg label{grid-column:span 2}.seg label:nth-child(n+4){grid-column:span 3}
+@media(max-width:520px){.seg{grid-template-columns:1fr 1fr}.seg label,.seg label:nth-child(n+4){grid-column:auto}.seg label:last-child{grid-column:span 2}}
 .seg input{position:absolute;opacity:0;pointer-events:none}
 .seg span{display:block;text-align:center;font:600 14px var(--cond);letter-spacing:.14em;text-transform:uppercase;padding:12px 6px;border:1px solid var(--line);color:var(--m);cursor:pointer;transition:all .15s}
 .seg input:checked+span{background:var(--y);color:var(--a);border-color:var(--y)}
